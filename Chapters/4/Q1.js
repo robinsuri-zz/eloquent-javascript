@@ -1,16 +1,17 @@
-var range = function (start, end, step) {
-  step = (typeof step === "undefined"
-          ? (start < end ? 1 : -1)
-          : step);
-  var isFinished = function (n) {
-    return start < end ? n > end : n < end;
+var range = function(start, end, step)
+{
+  if(typeof step =="undefined"){
+    step = start<=end ? 1:-1
+
   }
-  var array = [];
-  for (var n = start; !isFinished(n); n += step) {
-    array.push(n);
-  }
-  return array;
-};
+        var array = [];
+
+        for (var i = start; i*step <= end*step; i += step)
+            array.push(i);
+
+    return array;
+}
+
 
 var sum = function(array)
 {
