@@ -21,6 +21,8 @@ var prepend = function(elem, list) {
     return sublist;
 }
 
+var prependAlternative = function (item, list) { return { value: item, rest: list }; };
+
 var nth = function(list, num) {
      
     var array = listToArray(list);
