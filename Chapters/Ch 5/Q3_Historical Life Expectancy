@@ -1,0 +1,30 @@
+function average(array) {
+    function plus(a, b) {
+        return a + b;
+    }
+    return array.reduce(plus) / array.length;
+}
+
+var map = {};
+
+ancestry.forEach(function(person) {
+    var century = Math.ceil(person.died / 100);
+    var age = person.died - person.born;
+    if (typeof map[century] === "undefined")
+        map[century] = [];
+    map[century].push(age);
+});
+
+for (var key in map)
+    console.log(key + ":  " + Math.round(average(map[key]) * 10) / 10);
+
+function groupBy(array, f) {
+    var groups = {};
+    array.forEach(function(elem) {
+        var grp = f(elem);
+        if (typeof groups[grp] == "undefined")
+            groups[grp] = [];
+        groups[grp].push(elem);
+    });
+    return groups;
+}

@@ -1,17 +1,19 @@
 function average(array) {
-  function plus(a, b) { return a + b; }
-  return array.reduce(plus) / array.length;
+    function plus(a, b) {
+        return a + b;
+    }
+    return array.reduce(plus) / array.length;
 }
 
 var byName = {};
 ancestry.forEach(function(person) {
-  byName[person.name] = person;
+    byName[person.name] = person;
 });
 
 var array = [];
 ancestry.forEach(function(person) {
-  var mother = byName[person.mother];
-  if(typeof mother != "undefined")
-  array.push(person.born-byName[person.mother].born);
+    var mother = byName[person.mother];
+    if (typeof mother != "undefined")
+        array.push(person.born - byName[person.mother].born);
 });
 console.log(average(array));
