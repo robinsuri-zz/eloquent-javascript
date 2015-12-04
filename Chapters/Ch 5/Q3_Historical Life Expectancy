@@ -28,3 +28,9 @@ function groupBy(array, f) {
     });
     return groups;
 }
+
+var groups = groupBy(ancestry,function(person){ return Math.ceil(person.died / 100)});
+for (var key in groups){
+  var map = groups[key].map(function(person){ return person.died-person.born});
+  console.log(average(map));
+}

@@ -17,3 +17,10 @@ ancestry.forEach(function(person) {
         array.push(person.born - byName[person.mother].born);
 });
 console.log(average(array));
+
+
+/*  This is more readable version :
+var hasMother = function (person) { return person.mother && byName[person.mother] }
+ancestry.filter(hasMother).map(getAgeDifference)
+average(ancestry.filter(hasMother).map(getAgeDifference))
+*/
