@@ -1,0 +1,31 @@
+fn(item,stop) {
+  if(item==false){
+    stop(false);
+  }
+}
+
+function ForEach(array,default,fn){
+   var stopValue;
+   var stop = function(val){
+     stopValue = val;
+   };
+ for(var i =0; i<array.length;i++)
+ {
+  fn(array[i],stop);
+   if(typeof stopValue != "undefined"){
+     return stopValue;
+   }
+ }
+  return default;
+  }
+
+  /*
+
+  var every  = function(array,f){
+    return forEach(array,true,function(a,b){
+  if(f(a)==false)
+    b(false);
+    });
+  }
+
+  */

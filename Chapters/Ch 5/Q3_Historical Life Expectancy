@@ -34,3 +34,28 @@ for (var key in groups){
   var map = groups[key].map(function(person){ return person.died-person.born});
   console.log(average(map));
 }
+
+
+/*
+
+ var transformObject = function (o, f) {
+    var r = {};
+    Object.keys(o).forEach(function (k) {
+        r[k] = f(o[k]);
+    });
+    return r;
+};
+
+
+var lifeExpectancies = function () {
+    var groups = groupBy(ancestry, function (person) {
+        return Math.ceil(person.died / 100);
+    });
+    return transformObject(groups, function (people) {
+        return average(people.map(age));
+    });
+};
+
+
+
+*/
