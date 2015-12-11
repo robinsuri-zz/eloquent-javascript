@@ -2,25 +2,54 @@ function ArraySeq(array) {
     this.array = array;
 }
 
-ArraySeq.prototype.iteration = function() {
-    return this.array;
-}
+Object.defineProperty(ArraySeq.prototype, 'iterator', {
+    get: function() {
+        return {
+            array: this.array,
+            index: 0,
+            hasnext: function() {
+                return this.array.length > this.index ? true : false;
+            },
+            next: function() {
+                var elem = this.array[this.index];
+                this.index++;
+                return elem;
+            }
+        };
+    }
+});
 
 function RangeSeq(from, to) {
     this.from = from;
     this.to = to;
 }
 
-RangeSeq.prototype.iteration = function() {
-    var array = [];
-    for (var i = this.from; i <= this.to; i++)
-        array.push(i);
-    return array;
-}
+Object.defineProperty(RangeSeq.prototype, 'iterator', {
+    get: function() {
+        var array = [];
+        for (var i = this.from; i < this.to; i++) {
+            array.push(i);
+        }
+        return {
+            array: array,
+            index: 0,
+            hasnext: function() {
+                return this.array.length > this.index ? true : false;
+            },
+            next: function() {
+                var elem = this.array[this.index];
+                this.index++;
+                return elem;
+            }
+        };
+    }
+});
 
 function logFive(obj) {
-    var array = obj.iteration();
-    length = array.length > 5 ? 5 : array.length;
-    for (var i = 0; i < length; i++)
-        console.log(array[i]);
+    var itr = obj.iterator;
+    var count = 0;
+    while (itr.hasnext() && count < 5) {
+        console.log(itr.next());
+        count++;
+    }
 }
