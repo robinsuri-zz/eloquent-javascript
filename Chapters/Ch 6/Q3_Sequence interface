@@ -6,21 +6,21 @@ ArraySeq.prototype.iteration = function() {
     return this.array;
 }
 
-function RangeSeq(from,to) {
+function RangeSeq(from, to) {
     this.from = from;
     this.to = to;
 }
 
 RangeSeq.prototype.iteration = function() {
-    var array  = [];
-    for(var i = this.from;i<=this.to;i++)
-    array.push(i);
+    var array = [];
+    for (var i = this.from; i <= this.to; i++)
+        array.push(i);
     return array;
 }
 
 function logFive(obj) {
     var array = obj.iteration();
     length = array.length > 5 ? 5 : array.length;
-    for(var i =0;i<length;i++)
-    console.log(array[i]);
+    for (var i = 0; i < length; i++)
+        console.log(array[i]);
 }
