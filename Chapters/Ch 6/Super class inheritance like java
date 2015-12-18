@@ -1,0 +1,54 @@
+function Base() {
+
+	}
+
+Base.prototype.foo = function() {}
+Base.prototype.bar = funciton () {}
+
+function Sub() {
+	Base();
+
+
+}
+
+Sub.prototype.baz = function() {}
+Sub.prototype.foo = function() {}
+x = new Sub();
+x.foo();
+x.bar();
+x.baz();
+
+Implement super class behaviour
+
+/*
+
+function Sub() {}
+function Base() {}
+Sub.prototype = Object.create(Base.prototype);
+Base.prototype.foo = function() {console.log("Base foo");}
+Base.prototype.bar = function() {console.log("Base bar");}
+Sub.prototype.baz = function() {console.log("Sub baz");}
+Sub.prototype.foo = function() {console.log("Sub foo");}
+x = new Sub();
+x.foo();
+x.baz();
+x.bar();
+
+
+*/
+
+var base = {
+speak : function() {
+console.log("base speak");
+},
+fly : function(){
+console.log("base fly");
+}
+};
+
+var sub = Object.create(base);
+sub.speak = function(){
+console.log("sub speak");
+};
+
+

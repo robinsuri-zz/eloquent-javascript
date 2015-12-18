@@ -1,0 +1,5 @@
+Object.create = function(p) {
+    function C() {};
+    C.prototype = p;
+    return new C();
+}
