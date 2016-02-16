@@ -1,16 +1,20 @@
 function all(promises) {
-    var arr = [];
-    return new Promise(function(success, fail) {
-        promises.forEach(function(promise) {
+    return new Promise(function(succeed, fail) {
+        var arr = [], pending = promises.length;
+        promises.forEach(function(promise, i) {
             promise.then(function(val) {
-                    arr.push(val);
+                arr[i] = val;
+                pending -= 1;
+                if(pending == 0) {
+                    succeed(arr);
+                }
                 }, function(error) {
                     fail(error);
-                }
-
-            );
+                });
         });
-        success(arr);
+        if(promises.length == 0) {
+            succeed(arr);
+        }
     });
 }
 // Test code.
