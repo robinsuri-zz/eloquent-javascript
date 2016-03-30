@@ -1,83 +1,59 @@
-<html>
-<head>
+/*
+var game = function() {
+    var game = {};
+    game.initboard = function() {
+        return [[1,1,1], [1,0,1]];
+    }
+    game.next = function(board) {
+        return [];
+    };
+    return game;
+}();
 
-</head>
-<body>
-<div id="grid"></div>
-<button id="next">Next generation</button>
+var board = game.initboard
+*/
 
-<script>
-for(var row = 1;row<=10;row++) {
-	var tr = document.createElement("tr");
-	for(var col = 1;col<=10;col++) {
-	    var td = document.createElement("td");
-	    td.id=row+"_"+col;
-	    var num = Math.random();
-	    if(num <0.5) {
-	    td.style.background = 'red';
-	    }
-	    else {
-	    td.style.background = 'green';
+onclicklistener(function() {
+    board = next(board);
+    draw(board);
+})
+
+board = [[0,1,0,1],[1,1,0,0]];
+function next(board)
+{
+    var nextBoard = [];
+    var rows = board.length;
+    var cols = board[0].length;
+
+    for(var i = 0; i < rows; i++){
+        for(var j = 0;j < cols; j++) {
+            var cell = board[i][j];
+            var liveNeighbours = getLiveNeighbours(i,j, board);
+            nextBoard[i][j] =  0 or 1
         }
-	    td.style.width = 20;
-	    td.style.height = 20;
-	    tr.appendChild(td);
-	}
-	document.getElementById("grid").appendChild(tr);
+     }
+    return nextBoard;
 }
 
-function getLiveNeighbours(row,col){
-    var count = 0;
-    count +=isAlive(row-1,col);
-    count +=isAlive(row-1,col-1);
-    count +=isAlive(row-1,col+1);
-    count +=isAlive(row,col-1);
-    count +=isAlive(row,col+1);
-    count +=isAlive(row+1,col-1);
-    count +=isAlive(row+1,col);
-    count +=isAlive(row+1,col+1);
-    return count;
-}
-function isAlive(row,col){
-	if(row <1 || row>10 || col<1 || col> 10)
-		return 0;
-  var color = document.getElementById(row+"_"+col).style["background-color"]
-  return color === "red" ? 0 : 1;
-}
-document.getElementById("next").addEventListener("click", function(){
-   var colors = [];
-	for( var row = 1; row<=10;row++){
-		var subcolors = [];
-        for( var col = 1;col<=10;col++) {
-           var liveNeighbours = getLiveNeighbours(row,col);
-           if(isAlive(row,col) === 1){
-               if(liveNeighbours < 2 || liveNeighbours > 3)
-               {
-                 subcolors.push("red");
-               }
-               if(liveNeighbours === 2 || liveNeighbours ===3){
-               	subcolors.push("green");
-               }
-           }
-           else
-           {
-                if(liveNeighbours === 3){
-                	subcolors.push("green");
-                }
-                else {
-                	subcolors.push("red");
-                }
-           }
-        }
-        colors.push(subcolors);
-	}
+function getLiveNeighbours(i,j,board)
+{
+   var count = 0;
+   count +=isAlive(i-1, j, board);
+   count +=isAlive(i-1, j-1, board);
+   count +=isAlive(i-1, j+1, board);
+   count +=isAlive(i, j-1, board);
+   count +=isAlive(i, j+1, board);
+   count +=isAlive(i+1, j-1, board);
+   count +=isAlive(i+1, j, board);
+   count +=isAlive(i+1, j+1, board);
+ return count;
 
-	for(var row = 1;row<=10;row++){
-		for(var col=1;col<=10;col++){
-		document.getElementById(row+"_"+col).style["background-color"] = colors[row][col];
-		}
-	}
-});
-</script>
- </body>
-</html>
+}
+
+function isAlive(i,j,board){
+     if(i<0 || j<0 || i >= board.length || j >= board[0].length)
+         return 0;
+     return board[i][j];
+}
+
+
