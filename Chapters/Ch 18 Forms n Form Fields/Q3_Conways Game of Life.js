@@ -13,12 +13,68 @@ var game = function() {
 var board = game.initboard
 */
 
-onclicklistener(function() {
-    board = next(board);
-    draw(board);
-})
+<html>
+  <head>
+  </head>
+  <body>
+<button id="next">Next generation</button>
 
-board = [[0,1,0,1],[1,1,0,0]];
+<script>
+
+
+draw = function(board) {
+  if(document.getElementById('grid') !== null) {
+  document.getElementById('grid').remove();
+}
+  var div = document.createElement('div');
+  div.id = 'grid';
+  document.body.appendChild(div);
+  for(var i = 0;i<10;i++){
+      var tr = document.createElement("tr");
+    for(var j = 0;j<10;j++) {
+      var cell = board[i][j]; // 1== alive 0 == dead
+        var td = document.createElement("td");
+        td.style.width = 20;
+        td.style.height = 20;
+        if(cell ===1)
+        {
+          td.style.background = 'red';
+        }
+        else if (cell === 0){
+          td.style.background = 'green';
+        }
+    tr.appendChild(td);
+    }
+    document.getElementById('grid').appendChild(tr);
+  }
+}
+var board = initBoard();
+draw(board);
+document.getElementById("next").addEventListener("click", function(){
+  board = next(board);
+  draw(board);
+
+});
+
+function initBoard() {
+  var board = [];
+  for(var i = 0; i<10;i++){
+    var row = [];
+    for(var j = 0;j<10;j++) {
+      var num = Math.random();
+      if(num< 0.5){
+         row[j] = 0;
+      }
+      else {
+        row[j] = 1;
+      }
+
+    }
+    board[i] = row;
+  }
+  return board;
+}
+
 function next(board)
 {
     var nextBoard = [];
@@ -26,11 +82,29 @@ function next(board)
     var cols = board[0].length;
 
     for(var i = 0; i < rows; i++){
+      var row = [];
         for(var j = 0;j < cols; j++) {
             var cell = board[i][j];
             var liveNeighbours = getLiveNeighbours(i,j, board);
-            nextBoard[i][j] =  0 or 1
+            if(cell ==1){
+              if(liveNeighbours < 2 || liveNeighbours > 3){
+                row[j] = 0;
+              }
+              if(liveNeighbours ===2 || liveNeighbours ===3){
+                row[j] = 1;
+              }
+            }
+            else if(cell === 0) {
+              if(liveNeighbours ===3){
+                row[j] = 1;
+              }
+              else
+              {
+                row[j] = 0;
+              }
+            }
         }
+        nextBoard[i] = row;
      }
     return nextBoard;
 }
@@ -56,4 +130,6 @@ function isAlive(i,j,board){
      return board[i][j];
 }
 
-
+</script>
+</body>
+</html>
