@@ -1,4 +1,4 @@
-var s = "f";
+dvar s = "f";
 dsd
 for (var num = 1; num <= 7; num += 1) {
     s = s + "#";
