@@ -1,3 +1,3 @@
-var min = function(a, b) {
+branch bvar min = function(a, b) {
     return a < b ? a : b;
 }
