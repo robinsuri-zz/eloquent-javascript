@@ -1,3 +1,3 @@
-var min = function(a, b) {
+sadfkjahvar min = function(a, b) {
     return a < b ? a : b;
 }
