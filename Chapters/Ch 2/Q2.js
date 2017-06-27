@@ -1,4 +1,4 @@
-dlfkjfsdlkfjsdfor (var num = 1; num <= 100; num++) {
+dlkfjdlfkjfsdlkfjsdfor (var num = 1; num <= 100; num++) {
 
     var print = "";
     if (num % 3 == 0)
