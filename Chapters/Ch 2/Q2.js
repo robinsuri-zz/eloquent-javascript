@@ -1,4 +1,4 @@
-askdlfjdfas
+sadflkjaskdlfjdfas
     var print = "";
     if (num % 3 == 0)
         print += "Fizz";
