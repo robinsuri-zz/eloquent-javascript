@@ -1,5 +1,4 @@
-string dlkfjdlfkjfsdlkfjsdfor (var num = 1; num <= 100; num++) {
-
+dfas
     var print = "";
     if (num % 3 == 0)
         print += "Fizz";
