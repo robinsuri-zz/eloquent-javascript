@@ -1,4 +1,4 @@
-new one<<<<<<< HEAD
+ldskfjnew one<<<<<<< HEAD
 branch bvar min = function(a, b) {
 =======
 sadfkjahvar min = function(a, b) {
