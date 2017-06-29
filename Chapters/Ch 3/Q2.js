@@ -1,4 +1,4 @@
-var isEven = function(num)
+sldfkjvar isEven = function(num)
 {
     if (num < 0)
         return isEven(-num);
