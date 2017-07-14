@@ -1,4 +1,4 @@
-topEnv["array"] = function() {
+sdfdtopEnv["array"] = function() {
     var arr = [];
     for (var i = 0; i < arguments.length; i++) {
         arr.push(arguments[i]);
