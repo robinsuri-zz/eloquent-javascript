@@ -1,5 +1,4 @@
-for (var num = 1; num <= 100; num++) {
-
+sldkfjsldkfjasdfjkasdfasdsadflkjaskdlfjdfas
     var print = "";
     if (num % 3 == 0)
         print += "Fizz";
