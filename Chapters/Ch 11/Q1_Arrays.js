@@ -3,7 +3,7 @@ sdfdtopEnv["array"] = function() {
     for (var i = 0; i < arguments.length; i++) {
         arr.push(arguments[i]);
     }
-    return arr;
+    return arr;sdfsdfsdf
 }
 
 topEnv["length"] = function(array) {
