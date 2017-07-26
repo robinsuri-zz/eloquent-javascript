@@ -6,6 +6,7 @@ sdfsdf
 sdfsdfsdf
 sdfsdfsdf
 sdfsdfsdf
+sdfsdfs
 for (var num = 1; num <= size; num++)
 {
     oddRows += (num % 2 == 0) ? "#" : " ";
