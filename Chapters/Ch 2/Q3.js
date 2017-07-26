@@ -2,8 +2,8 @@ var oddRows = "";
 sdlkfjdl
 var evenRows = "";
 var size = 8;
-
 sdfsdf
+sdfsdfsdf
 for (var num = 1; num <= size; num++)
 {
     oddRows += (num % 2 == 0) ? "#" : " ";
