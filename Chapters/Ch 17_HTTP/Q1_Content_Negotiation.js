@@ -3,3 +3,4 @@ var req = new XMLHttpRequest();
       req.setRequestHeader("Accept","application/rainbows+unicorns");
       req.send(null);
       console.log(req.responseText);
+asdfsdfsdf
